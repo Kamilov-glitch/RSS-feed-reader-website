@@ -27,9 +27,6 @@ include "partials/header.php"
         $feed = simplexml_load_file($url);
         echo "<br>";
         echo "<hr>";
-        // echo '<pre>';
-        // var_dump($feed);
-        // echo '</pre>';
         foreach($feed->channel->item as $item) :
 ?>
 <div class="container">
