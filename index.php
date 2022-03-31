@@ -22,17 +22,33 @@ include "partials/header.php"
 </div>
 
 <?php
-    if ($_POST['url']) {
+    if ($_POST['url']) :
         $url = $_POST['url'];
         $feed = simplexml_load_file($url);
-        echo '<pre>';
-        var_dump($feed);
-        echo '</pre>';
-    }
+        echo "<br>";
+        echo "<hr>";
+        // echo '<pre>';
+        // var_dump($feed);
+        // echo '</pre>';
+        foreach($feed->channel->item as $item) :
 ?>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title"><?php echo $item->title ?></h5>
+        </div>
+        <div class="card-body">
+            <p>
+                <?php echo $item->description ?> 
+                <a href="<?php echo $item->link ?>" target="_blank"> Read more...</a>
+            </p>
+        </div>
+    </div>
+</div>
 
 <?php
-
+    endforeach;
+    endif;
 include "partials/footer.php"
 
 ?>
